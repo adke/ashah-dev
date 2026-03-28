@@ -8,7 +8,7 @@ const featuredProjects = [
   {
     title: "GavelAI",
     description:
-      "A platform for running structured reviews with language models—configure rubrics, kick off batches, and inspect results in a web UI, with a Python API and local model runtime.",
+      "A platform for running structured reviews with language models: configure rubrics, kick off batches, and inspect results in a web UI, with a Python API and local model runtime.",
     technologies: ["React", "TypeScript", "FastAPI", "Python", "SQLite", "Ollama"],
     period: "Project",
   },
@@ -50,7 +50,7 @@ export function ProjectsSection() {
               Featured <span className="marker-highlight">work</span>
             </h2>
             <p className="text-sm text-muted-foreground max-w-xl">
-              Built end to end—UI, API, and model orchestration.
+              Built end to end: UI, API, and model orchestration.
             </p>
           </div>
         </div>

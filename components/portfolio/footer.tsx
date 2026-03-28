@@ -1,6 +1,6 @@
 "use client"
 
-import { Heart, ArrowUp } from "lucide-react"
+import { ArrowUp } from "lucide-react"
 import Link from "next/link"
 
 const footerLinks = [
@@ -21,7 +21,7 @@ export function Footer() {
       <div className="max-w-4xl mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo */}
-          <div className="flex flex-col items-center md:items-start gap-1.5">
+          <div className="flex flex-col items-center md:items-start gap-3">
             <Link 
               href="/" 
               className="paper-card px-3 py-1.5 font-bold text-sm tracking-tight"
@@ -63,14 +63,9 @@ export function Footer() {
         <div className="paper-divider my-6" />
         
         {/* Copyright */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+        <div className="flex items-center justify-center text-xs">
           <p className="font-mono text-muted-foreground">
             © {new Date().getFullYear()} Adish Shah
-          </p>
-          <p className="flex items-center gap-1.5 font-mono text-muted-foreground">
-            Built with 
-            <Heart className="h-3.5 w-3.5 text-primary fill-primary" /> 
-            using Next.js
           </p>
         </div>
       </div>

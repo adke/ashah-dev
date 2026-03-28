@@ -28,9 +28,9 @@ export default function PortfolioPage() {
       <SectionDivider variant="terminal" />
       <SkillsSection />
       <SectionDivider variant="wave" />
-      <GitHubSection />
-      <SectionDivider variant="grid" />
       <EducationSection />
+      <SectionDivider variant="grid" />
+      <GitHubSection />
       <SectionDivider variant="code" />
       <ContactSection />
       <Footer />

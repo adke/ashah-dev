@@ -32,7 +32,7 @@ const skillCategories = [
       { name: "PyTorch", level: 80 },
       { name: "TensorFlow", level: 70 },
       { name: "NumPy / Pandas", level: 85 },
-      { name: "Scikit-learn", level: 75 },
+      { name: "Sklearn", level: 75 },
     ],
     variant: "green" as const,
   },
@@ -173,7 +173,7 @@ export function SkillsSection() {
               ))}
             </div>
             <p className="text-center text-[10px] text-muted-foreground mt-6 leading-relaxed max-w-2xl mx-auto">
-              Also scripting, automated tests, logging stacks, and the usual CS building blocks—structures, OOP, and ML coursework.
+              Also scripting, automated tests, logging stacks, and the usual CS building blocks: structures, OOP, and ML coursework.
             </p>
           </div>
         </div>

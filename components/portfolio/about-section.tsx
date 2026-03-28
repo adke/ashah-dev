@@ -7,7 +7,7 @@ import Link from "next/link"
 const interests = [
   {
     icon: Code2,
-    title: "Full-stack",
+    title: "Full stack",
     description: "React, TypeScript, Python APIs",
     variant: "red" as const,
   },
@@ -26,7 +26,7 @@ const interests = [
   {
     icon: Gamepad2,
     title: "Product",
-    description: "Shipping features end-to-end",
+    description: "Shipping features end to end",
     variant: "yellow" as const,
   },
 ]
@@ -81,12 +81,12 @@ export function AboutSection() {
             <div className="paper-card p-6 md:p-8 lined-paper">
               <div className="space-y-5">
                 <p className="text-base text-foreground leading-relaxed">
-                  I study Computer Engineering at Waterloo and have worked at companies ranging from enterprise software to smaller AI-focused teams. Day to day that has meant a mix of web clients,
+                  I study Computer Engineering at Waterloo and have worked at companies ranging from enterprise software to smaller AI focused teams. Day to day that has meant a mix of web clients,
                   APIs, data stores, and cloud deploys.
                 </p>
 
                 <p className="text-base text-foreground leading-relaxed">
-                  I am especially interested when the problem needs both a thoughtful interface and a dependable backend—often integrating ML or generative models into the stack.
+                  I am especially interested when the problem needs both a thoughtful interface and a dependable backend, often integrating ML or generative models into the stack.
                 </p>
 
                 <p className="text-base text-foreground leading-relaxed">

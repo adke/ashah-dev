@@ -183,7 +183,7 @@ export function ContactSection() {
                   <div>
                     <p className="font-bold text-xs">Phone</p>
                     <Link href="tel:+15879663595" className="text-xs text-primary font-mono underline">
-                      +1 587-966-3595
+                      +1 587 966 3595
                     </Link>
                   </div>
                 </div>

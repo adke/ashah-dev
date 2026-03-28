@@ -127,7 +127,7 @@ export function HeroSection() {
             {/* Description */}
             <div className="lined-paper py-4 px-3 mb-10 max-w-2xl">
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                I like owning features across the stack: polished web UIs, solid APIs, and ML or LLM-powered
+                I like owning features across the stack: polished web UIs, solid APIs, and ML or LLM powered
                 pieces when the roadmap calls for them. I am looking for teams where I can keep leveling up
                 as an engineer.
               </p>
