@@ -6,11 +6,6 @@ node_modules
 .next
 out
 
-# build / test
-dist
-coverage
-.turbo
-
 # env
 .env
 .env*.local
@@ -27,5 +22,6 @@ pnpm-debug.log*
 # vercel
 .vercel
 
-# ide (keep .vscode/settings.json for shared editor excludes)
+# ide
 .idea
+.vscode
