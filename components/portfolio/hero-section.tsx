@@ -18,7 +18,7 @@ export function HeroSection() {
   useEffect(() => {
     setIsVisible(true)
     
-    const birthDate = new Date("2003-01-01")
+    const birthDate = new Date("2003-02-08")
     
     const updateAge = () => {
       const now = new Date()
