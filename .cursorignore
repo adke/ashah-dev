@@ -1,0 +1,21 @@
+# Dependencies — keep out of Cursor index & reviews
+node_modules
+.pnpm-store
+
+# Next.js build output
+.next
+out
+
+# Caches & tooling
+.turbo
+.cache
+coverage
+dist
+
+# Logs & env
+*.log
+.env
+.env*.local
+
+# OS
+.DS_Store
