@@ -1,0 +1,826 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Paper Theme - clean neutral with blue accent */
+  --background: oklch(0.97 0.005 240);
+  --foreground: oklch(0.15 0.01 240);
+  --card: oklch(0.99 0.003 240);
+  --card-foreground: oklch(0.15 0.01 240);
+  --popover: oklch(0.99 0.003 240);
+  --popover-foreground: oklch(0.15 0.01 240);
+  --primary: oklch(0.50 0.18 240);
+  --primary-foreground: oklch(0.99 0.003 240);
+  --secondary: oklch(0.95 0.005 240);
+  --secondary-foreground: oklch(0.20 0.01 240);
+  --muted: oklch(0.93 0.005 240);
+  --muted-foreground: oklch(0.45 0.01 240);
+  --accent: oklch(0.85 0.08 145);
+  --accent-foreground: oklch(0.15 0.01 240);
+  --destructive: oklch(0.55 0.18 25);
+  --destructive-foreground: oklch(0.99 0.003 240);
+  --border: oklch(0.20 0.01 240);
+  --input: oklch(0.95 0.005 240);
+  --ring: oklch(0.50 0.18 240);
+  --radius: 0px;
+  
+  /* Paper accent colors - vibrant palette */
+  --paper-cream: oklch(0.96 0.04 85);
+  --paper-peach: oklch(0.88 0.12 55);
+  --paper-sage: oklch(0.86 0.10 145);
+  --paper-sky: oklch(0.88 0.10 230);
+  --paper-lavender: oklch(0.87 0.10 290);
+  --paper-mint: oklch(0.88 0.10 165);
+  --paper-coral: oklch(0.85 0.14 35);
+  
+  /* RGB accent colors - vibrant and distinct */
+  --paper-red: oklch(0.85 0.16 25);
+  --paper-blue: oklch(0.85 0.14 240);
+  --paper-green: oklch(0.86 0.14 145);
+  --paper-yellow: oklch(0.92 0.16 95);
+  
+  /* Chart colors */
+  --chart-1: oklch(0.50 0.18 240);
+  --chart-2: oklch(0.55 0.14 145);
+  --chart-3: oklch(0.75 0.12 95);
+  --chart-4: oklch(0.60 0.12 290);
+  --chart-5: oklch(0.50 0.16 25);
+  
+  /* Sidebar */
+  --sidebar: oklch(0.95 0.005 240);
+  --sidebar-foreground: oklch(0.18 0.01 240);
+  --sidebar-primary: oklch(0.50 0.18 240);
+  --sidebar-primary-foreground: oklch(0.99 0.003 240);
+  --sidebar-accent: oklch(0.93 0.005 240);
+  --sidebar-accent-foreground: oklch(0.22 0.01 240);
+  --sidebar-border: oklch(0.22 0.01 240);
+  --sidebar-ring: oklch(0.50 0.18 240);
+}
+
+.dark {
+  /* Dark paper theme - cool tones */
+  --background: oklch(0.14 0.01 240);
+  --foreground: oklch(0.92 0.005 240);
+  --card: oklch(0.18 0.01 240);
+  --card-foreground: oklch(0.92 0.005 240);
+  --popover: oklch(0.18 0.01 240);
+  --popover-foreground: oklch(0.92 0.005 240);
+  --primary: oklch(0.70 0.14 240);
+  --primary-foreground: oklch(0.14 0.01 240);
+  --secondary: oklch(0.22 0.01 240);
+  --secondary-foreground: oklch(0.88 0.005 240);
+  --muted: oklch(0.20 0.01 240);
+  --muted-foreground: oklch(0.60 0.01 240);
+  --accent: oklch(0.75 0.08 145);
+  --accent-foreground: oklch(0.14 0.01 240);
+  --destructive: oklch(0.55 0.15 25);
+  --destructive-foreground: oklch(0.98 0.003 240);
+  --border: oklch(0.40 0.01 240);
+  --input: oklch(0.20 0.01 240);
+  --ring: oklch(0.70 0.14 240);
+  
+  /* Dark paper accents */
+  --paper-cream: oklch(0.28 0.02 240);
+  --paper-peach: oklch(0.35 0.08 55);
+  --paper-sage: oklch(0.32 0.06 145);
+  --paper-sky: oklch(0.30 0.06 230);
+  --paper-lavender: oklch(0.30 0.06 290);
+  
+  /* Chart colors */
+  --chart-1: oklch(0.70 0.14 240);
+  --chart-2: oklch(0.65 0.12 145);
+  --chart-3: oklch(0.80 0.10 95);
+  --chart-4: oklch(0.65 0.10 290);
+  --chart-5: oklch(0.55 0.14 25);
+  
+  /* Sidebar */
+  --sidebar: oklch(0.16 0.01 240);
+  --sidebar-foreground: oklch(0.92 0.005 240);
+  --sidebar-primary: oklch(0.70 0.14 240);
+  --sidebar-primary-foreground: oklch(0.14 0.01 240);
+  --sidebar-accent: oklch(0.22 0.01 240);
+  --sidebar-accent-foreground: oklch(0.88 0.005 240);
+  --sidebar-border: oklch(0.40 0.01 240);
+  --sidebar-ring: oklch(0.70 0.14 240);
+}
+
+@theme inline {
+  --font-sans: var(--font-inter), 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  ::selection {
+    background: oklch(0.50 0.18 240 / 0.25);
+    color: oklch(0.15 0.01 240);
+  }
+  
+  .dark ::selection {
+    background: oklch(0.70 0.14 240 / 0.25);
+    color: oklch(0.92 0.005 240);
+  }
+}
+
+/* ============================================
+   NEOBRUTALIST PAPER UTILITIES
+   ============================================ */
+
+/* Main paper card - thick borders, hard shadows */
+.paper-card {
+  border: 2px solid var(--border);
+  box-shadow: 4px 4px 0 var(--border);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Only apply default background if not overridden */
+.paper-card:not([class*="bg-"]) {
+  background: var(--card);
+}
+
+.paper-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--border);
+}
+
+/* Paper texture overlay - subtle grain */
+.paper-texture {
+  position: relative;
+}
+
+.paper-texture::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.015'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Stamp badge */
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 2px solid var(--border);
+  background: var(--paper-peach);
+  color: var(--foreground);
+  transform: rotate(-2deg);
+}
+
+/* Hand-drawn underline */
+.hand-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.hand-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--primary);
+  transform: rotate(-0.5deg) scaleX(1.02);
+}
+
+/* Marker highlight - softer */
+.marker-highlight {
+  background: linear-gradient(180deg, transparent 55%, var(--paper-peach) 55%);
+  padding: 0 3px;
+}
+
+/* Grid paper background */
+.grid-paper {
+  background-image: 
+    linear-gradient(oklch(0.70 0.01 240 / 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.70 0.01 240 / 0.15) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Lined paper background */
+.lined-paper {
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 27px,
+    oklch(0.75 0.02 200 / 0.2) 27px,
+    oklch(0.75 0.02 200 / 0.2) 28px
+  );
+  background-position: 0 6px;
+}
+
+/* Post-it note styles with harmonious colors */
+.post-it {
+  background: var(--paper-cream);
+  padding: 1rem;
+  border: 2px solid var(--border);
+  box-shadow: 3px 3px 0 oklch(0.60 0.01 240);
+  transform: rotate(0.5deg);
+}
+
+.post-it.peach {
+  background: var(--paper-peach);
+  box-shadow: 3px 3px 0 oklch(0.68 0.14 55);
+}
+
+.post-it.sage {
+  background: var(--paper-sage);
+  box-shadow: 3px 3px 0 oklch(0.66 0.12 145);
+}
+
+.post-it.sky {
+  background: var(--paper-sky);
+  box-shadow: 3px 3px 0 oklch(0.68 0.12 230);
+}
+
+.post-it.lavender {
+  background: var(--paper-lavender);
+  box-shadow: 3px 3px 0 oklch(0.67 0.12 290);
+}
+
+.post-it.mint {
+  background: var(--paper-mint);
+  box-shadow: 3px 3px 0 oklch(0.68 0.12 165);
+}
+
+.post-it.coral {
+  background: var(--paper-coral);
+  box-shadow: 3px 3px 0 oklch(0.65 0.16 35);
+}
+
+.post-it.red {
+  background: var(--paper-red);
+  box-shadow: 3px 3px 0 oklch(0.65 0.18 25);
+}
+
+.post-it.blue {
+  background: var(--paper-blue);
+  box-shadow: 3px 3px 0 oklch(0.65 0.16 240);
+}
+
+.post-it.green {
+  background: var(--paper-green);
+  box-shadow: 3px 3px 0 oklch(0.66 0.16 145);
+}
+
+.post-it.yellow {
+  background: var(--paper-yellow);
+  box-shadow: 3px 3px 0 oklch(0.72 0.18 95);
+}
+
+/* Polaroid style card */
+.polaroid {
+  background: var(--card);
+  padding: 0.625rem 0.625rem 2rem 0.625rem;
+  border: 2px solid var(--border);
+  box-shadow: 3px 3px 0 var(--border);
+  transform: rotate(-1deg);
+}
+
+/* Folder tab header */
+.folder-tab {
+  position: relative;
+  padding-top: 1.25rem;
+}
+
+.folder-tab::before {
+  content: attr(data-label);
+  position: absolute;
+  top: 0;
+  left: 0.75rem;
+  padding: 0.2rem 0.75rem;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: 2px solid var(--border);
+  border-bottom: none;
+  transform: translateY(-50%);
+}
+
+/* Sticker hover effect */
+.sticker {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.sticker:hover {
+  transform: rotate(-1.5deg) scale(1.01);
+}
+
+/* Tape decoration */
+.tape {
+  position: relative;
+}
+
+.tape::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1deg);
+  width: 60px;
+  height: 20px;
+  background: oklch(0.92 0.04 85 / 0.6);
+  border: 1px solid oklch(0.80 0.03 85 / 0.4);
+}
+
+/* Paper clip decoration */
+.paper-clip::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  right: 1rem;
+  width: 16px;
+  height: 32px;
+  border: 2px solid oklch(0.50 0.08 240);
+  border-radius: 8px 8px 0 0;
+  border-bottom: none;
+  transform: rotate(12deg);
+}
+
+/* Section divider */
+.paper-divider {
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--border) 0,
+    var(--border) 8px,
+    transparent 8px,
+    transparent 12px
+  );
+}
+
+/* Torn edge effect */
+.torn-edge::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(135deg, var(--background) 25%, transparent 25%),
+              linear-gradient(225deg, var(--background) 25%, transparent 25%);
+  background-size: 12px 12px;
+}
+
+/* Typewriter text */
+.typewriter {
+  font-family: var(--font-mono);
+  letter-spacing: -0.01em;
+}
+
+/* Scribble animation */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-0.5deg); }
+  50% { transform: rotate(0.5deg); }
+}
+
+.wiggle {
+  animation: wiggle 4s ease-in-out infinite;
+}
+
+/* Focus styles for inputs */
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 3px 3px 0 var(--primary);
+}
+
+/* Button press effect */
+.btn-press:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--border);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+/* Floating animation for decorative elements */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(var(--rotate, 0deg)); }
+  50% { transform: translateY(-10px) rotate(var(--rotate, 0deg)); }
+}
+
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.float-delayed {
+  animation: float 6s ease-in-out infinite;
+  animation-delay: -3s;
+}
+
+/* Subtle pulse for availability indicator */
+@keyframes soft-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.soft-pulse {
+  animation: soft-pulse 3s ease-in-out infinite;
+}
+
+/* Drift animation for background shapes */
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(10px, -10px) rotate(2deg); }
+  50% { transform: translate(0, -20px) rotate(0deg); }
+  75% { transform: translate(-10px, -10px) rotate(-2deg); }
+}
+
+.drift {
+  animation: drift 20s ease-in-out infinite;
+}
+
+/* Fade in up animation */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+/* Stagger delay utility classes */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
+/* Scale on hover */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+/* Smooth color transitions */
+.color-transition {
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Background shapes for sections */
+.bg-shape {
+  position: absolute;
+  border: 2px solid var(--border);
+  pointer-events: none;
+}
+
+/* Typing cursor animation */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.typing-cursor::after {
+  content: '|';
+  animation: blink 1s infinite;
+  margin-left: 2px;
+  color: var(--primary);
+}
+
+/* Paper float animation - gentle sway and rise */
+@keyframes paper-float {
+  0%, 100% { 
+    transform: translateY(0) rotate(var(--rotate, 0deg)); 
+  }
+  25% { 
+    transform: translateY(-8px) rotate(calc(var(--rotate, 0deg) + 2deg)); 
+  }
+  50% { 
+    transform: translateY(-15px) rotate(var(--rotate, 0deg)); 
+  }
+  75% { 
+    transform: translateY(-8px) rotate(calc(var(--rotate, 0deg) - 2deg)); 
+  }
+}
+
+.paper-float {
+  animation: paper-float 12s ease-in-out infinite;
+}
+
+/* Pencil sketch wiggle */
+@keyframes pencil-sketch {
+  0%, 100% { opacity: 0.08; transform: rotate(var(--rotation, 0deg)) scale(1); }
+  50% { opacity: 0.12; transform: rotate(calc(var(--rotation, 0deg) + 1deg)) scale(1.02); }
+}
+
+.pencil-sketch {
+  animation: pencil-sketch 8s ease-in-out infinite;
+}
+
+/* Cross rotation */
+@keyframes cross-rotate {
+  0%, 100% { transform: rotate(0deg); opacity: 0.1; }
+  50% { transform: rotate(90deg); opacity: 0.15; }
+}
+
+.cross-rotate {
+  animation: cross-rotate 15s ease-in-out infinite;
+}
+
+/* Circle pulse */
+@keyframes circle-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.1; }
+  50% { transform: scale(1.1); opacity: 0.15; }
+}
+
+.circle-pulse {
+  animation: circle-pulse 10s ease-in-out infinite;
+}
+
+/* Dots fade */
+@keyframes dots-fade {
+  0%, 100% { opacity: 0.08; }
+  50% { opacity: 0.15; }
+}
+
+.dots-fade {
+  animation: dots-fade 6s ease-in-out infinite;
+}
+
+/* ============================================
+   SUBTLE MICRO-INTERACTIONS
+   ============================================ */
+
+/* Staggered fade in for children */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: stagger-in 0.5s ease-out forwards;
+}
+
+.stagger-children > *:nth-child(1) { animation-delay: 0ms; }
+.stagger-children > *:nth-child(2) { animation-delay: 80ms; }
+.stagger-children > *:nth-child(3) { animation-delay: 160ms; }
+.stagger-children > *:nth-child(4) { animation-delay: 240ms; }
+.stagger-children > *:nth-child(5) { animation-delay: 320ms; }
+.stagger-children > *:nth-child(6) { animation-delay: 400ms; }
+
+@keyframes stagger-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Draw underline animation */
+.draw-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.draw-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: width 0.3s ease-out;
+}
+
+.draw-underline:hover::after {
+  width: 100%;
+}
+
+/* Shake animation for attention */
+@keyframes gentle-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-2px); }
+  40% { transform: translateX(2px); }
+  60% { transform: translateX(-1px); }
+  80% { transform: translateX(1px); }
+}
+
+.shake-hover:hover {
+  animation: gentle-shake 0.4s ease-in-out;
+}
+
+/* Scale pop on hover */
+.pop-hover {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.pop-hover:hover {
+  transform: scale(1.05);
+}
+
+/* Slide in from side */
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-left {
+  animation: slide-in-left 0.5s ease-out forwards;
+}
+
+.animate-slide-right {
+  animation: slide-in-right 0.5s ease-out forwards;
+}
+
+/* Pulse ring effect */
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 var(--primary);
+  }
+  50% {
+    box-shadow: 0 0 0 6px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+.pulse-ring {
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+/* Subtle rotation on hover */
+.rotate-hover {
+  transition: transform 0.3s ease;
+}
+
+.rotate-hover:hover {
+  transform: rotate(3deg);
+}
+
+/* Icon bounce */
+@keyframes icon-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.icon-bounce:hover svg {
+  animation: icon-bounce 0.4s ease-in-out;
+}
+
+/* Text reveal on scroll */
+@keyframes text-reveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.text-reveal {
+  animation: text-reveal 0.8s ease-out forwards;
+}
+
+/* Glow effect on focus */
+.glow-focus:focus {
+  box-shadow: 0 0 0 3px var(--primary), 0 0 20px var(--primary);
+}
+
+/* Progress bar fill animation */
+@keyframes progress-fill {
+  from {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  to {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+.animate-progress {
+  animation: progress-fill 1s ease-out forwards;
+}
+
+/* Card tilt on hover */
+.tilt-hover {
+  transition: transform 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.tilt-hover:hover {
+  transform: perspective(1000px) rotateX(2deg) rotateY(-2deg);
+}
+
+/* Breathing glow for CTAs */
+@keyframes breathe {
+  0%, 100% { box-shadow: 0 0 0 0 var(--primary); }
+  50% { box-shadow: 0 0 15px 2px var(--primary); }
+}
+
+.breathe {
+  animation: breathe 3s ease-in-out infinite;
+}
+
+/* Stamp press effect */
+@keyframes stamp-press {
+  0% { transform: scale(1.1) rotate(-5deg); opacity: 0; }
+  50% { transform: scale(0.95) rotate(-2deg); }
+  100% { transform: scale(1) rotate(var(--rotation, -2deg)); opacity: 1; }
+}
+
+.animate-stamp {
+  animation: stamp-press 0.4s ease-out forwards;
+}
+
+/* Marker highlight reveal */
+@keyframes marker-draw {
+  from {
+    background-size: 0% 45%;
+  }
+  to {
+    background-size: 100% 45%;
+  }
+}
+
+.marker-animate {
+  background: linear-gradient(180deg, transparent 55%, var(--paper-peach) 55%);
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  animation: marker-draw 0.6s ease-out forwards;
+}

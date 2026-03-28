@@ -1,0 +1,27 @@
+# dependencies
+node_modules
+.pnpm-store
+
+# next.js
+.next
+out
+
+# env
+.env
+.env*.local
+
+# debug / os
+.DS_Store
+*.pem
+npm-debug.log*
+pnpm-debug.log*
+
+# typescript
+*.tsbuildinfo
+
+# vercel
+.vercel
+
+# ide
+.idea
+.vscode
