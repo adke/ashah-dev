@@ -9,7 +9,7 @@ const education = [
     degree: "Bachelor of Applied Science — Computer Engineering",
     period: "Sep 2021 – Present",
     description:
-      "Studying systems programming, data structures, databases, and large-scale software design. Performance in coursework has stayed consistently strong.",
+      "Studying systems programming, data structures, databases, and large-scale software design.",
     logo: "UW",
     variant: "blue" as const,
   },

@@ -86,7 +86,7 @@ export function AboutSection() {
                 </p>
 
                 <p className="text-base text-foreground leading-relaxed">
-                  I am especially interested when the problem needs both a thoughtful interface and a dependable backend—sometimes with ML or generative models in the loop.
+                  I am especially interested when the problem needs both a thoughtful interface and a dependable backend—often integrating ML or generative models into the stack.
                 </p>
 
                 <p className="text-base text-foreground leading-relaxed">

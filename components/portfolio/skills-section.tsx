@@ -109,7 +109,7 @@ export function SkillsSection() {
               Technologies I <span className="marker-highlight">work with</span>
             </h2>
             <p className="text-sm text-muted-foreground max-w-xl">
-              A snapshot of what I reach for most often—everything here has shown up in school projects or on the job.
+              Tools and frameworks I use across projects and professional work.
             </p>
           </div>
         </div>
