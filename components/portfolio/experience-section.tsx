@@ -21,8 +21,8 @@ const experiences: {
     period: "Sep 2025 to Apr 2026",
     location: "Toronto, ON",
     summary:
-      "Full stack work on a client facing product: spreadsheet style exports in React, in app tooling around prompts and chat, Python services behind LLM driven insights, and lightweight admin flows backed by PostgreSQL.",
-    technologies: ["React", "TypeScript", "Python", "PostgreSQL"],
+      "Full stack work on a financial analytics platform. Shipped a React Excel export tool saving clients ~10 hrs/week, a Prompt Library that cut agentic workflow time by 30%, and a Pydantic AI powered Earnings feature that doubled the speed of stock insights. Also built a PostgreSQL backed admin system for in app banners.",
+    technologies: ["React", "TypeScript", "Python", "PostgreSQL", "Pydantic AI"],
     current: true,
   },
   {
@@ -31,8 +31,8 @@ const experiences: {
     period: "Jan 2025 to Apr 2025",
     location: "San Francisco, CA",
     summary:
-      "Helped build an AI centric workflow end to end: automation for pulling in external content, retrieval and context assembly in FastAPI, a richer streaming chat experience in React, and backend changes to route multiple models and keep latency under control.",
-    technologies: ["React", "FastAPI", "AWS", "TypeScript", "Vector DB"],
+      "Owned an AI product end to end. Automated ingestion of 100+ weekly transcripts via AWS Lambda, embedded 2,000+ vectors/month in Pinecone (~15 hrs/week saved), and built a FastAPI context assembly layer across Pinecone, S3, and Typesense. Added a multi model router (GPT, Claude, Gemini, Llama, Sonar) that cut token costs by 35% and restructured the backend with OpenAI multi tool support, reducing query time by 55%. Redesigned the React chat UI to surface AI reasoning and search context.",
+    technologies: ["React", "FastAPI", "AWS", "TypeScript", "Pinecone", "LLMs"],
     current: false,
   },
   {
@@ -41,8 +41,8 @@ const experiences: {
     period: "Jan 2024 to Apr 2024",
     location: "Brookline, MA",
     summary:
-      "Contributed to a brand asset product: Spring services, React UI, automated tests and pipelines, metrics in Prometheus and Grafana, and packaging the app for Kubernetes on AWS.",
-    technologies: ["Java Spring", "React", "Jenkins", "Docker", "Kubernetes"],
+      "Built Spring APIs and React components for the BrandKit product, supporting 1,000+ monthly asset interactions. Automated CI/CD with Jenkins, added Prometheus/Grafana observability, and containerized the app on EKS with Docker and Kubernetes, improving cost efficiency by 20%.",
+    technologies: ["Java Spring", "React", "Jenkins", "Docker", "Kubernetes", "Prometheus"],
     current: false,
   },
   {
@@ -51,8 +51,8 @@ const experiences: {
     period: "May 2023 to Aug 2023",
     location: "Tampa, FL",
     summary:
-      "Explored code focused language models: reading and experimenting with transformer style architectures, finetuning in notebooks with common ML libraries, and trying parameter efficient training so experiments stayed practical on limited hardware.",
-    technologies: ["Python", "PyTorch", "NLP", "Research"],
+      "Built a decoder only Transformer for C code generation. Finetuned with Hugging Face and PyTorch for a 50% performance boost, then applied LoRA with quantization to cut training time by 82% on 6,000 samples. Deploying the model into team workflows lifted productivity by 40%.",
+    technologies: ["Python", "PyTorch", "Hugging Face", "NLP", "LoRA"],
     current: false,
   },
   {
@@ -61,7 +61,7 @@ const experiences: {
     period: "Sep 2022 to Dec 2022",
     location: "Toronto, ON",
     summary:
-      "Worked on case management software: TypeScript React surfaces, Node and Express APIs, relational data in Postgres, and a path toward containerized deploys on Google Cloud with Kubernetes and Helm.",
+      "Developed React/TypeScript UI and Node.js/Express APIs for the Case Management product, driving a 15% gain in user satisfaction. Containerized with Docker and deployed on GCP via Kubernetes and Helm, contributing to a 30% improvement in business agility.",
     technologies: ["React", "TypeScript", "Node.js", "Express", "PostgreSQL", "GCP"],
     current: false,
   },
@@ -71,8 +71,8 @@ const experiences: {
     period: "Jan 2022 to Apr 2022",
     location: "Toronto, ON",
     summary:
-      "Mixed scripting and backend work: shell automation for log and backup hygiene, plus a Java Spring utility to ease Tableau related data moves between environments.",
-    technologies: ["Java Spring", "Shell", "Tableau"],
+      "Wrote KornShell scripts that cut backup durations by 80% and freed 45% more storage. Built a Java Spring Tableau migration tool that automated server data transfers, reducing manual tracking time by 70%.",
+    technologies: ["Java Spring", "KornShell", "Tableau"],
     current: false,
   },
 ]
