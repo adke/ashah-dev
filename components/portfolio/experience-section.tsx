@@ -9,6 +9,7 @@ const experiences: {
   role: string
   period: string
   location: string
+  logo: string
   summary: string
   technologies: string[]
   link?: string
@@ -20,6 +21,7 @@ const experiences: {
     role: "Software Engineer",
     period: "Sep 2025 to Apr 2026",
     location: "Toronto, ON",
+    logo: "/logos/boosted.svg",
     summary:
       "Full stack work on a financial analytics platform. Shipped a React Excel export tool saving clients ~10 hrs/week, a Prompt Library that cut agentic workflow time by 30%, and a Pydantic AI powered Earnings feature that doubled the speed of stock insights. Also built a PostgreSQL backed admin system for in app banners.",
     technologies: ["React", "TypeScript", "Python", "PostgreSQL", "Pydantic AI"],
@@ -30,6 +32,7 @@ const experiences: {
     role: "Software Engineer",
     period: "Jan 2025 to Apr 2025",
     location: "San Francisco, CA",
+    logo: "/logos/characterquilt-hq.png",
     summary:
       "Owned an AI product end to end. Automated ingestion of 100+ weekly transcripts via AWS Lambda, embedded 2,000+ vectors/month in Pinecone (~15 hrs/week saved), and built a FastAPI context assembly layer across Pinecone, S3, and Typesense. Added a multi model router (GPT, Claude, Gemini, Llama, Sonar) that cut token costs by 35% and restructured the backend with OpenAI multi tool support, reducing query time by 55%. Redesigned the React chat UI to surface AI reasoning and search context.",
     technologies: ["React", "FastAPI", "AWS", "TypeScript", "Pinecone", "LLMs"],
@@ -40,6 +43,7 @@ const experiences: {
     role: "Software Engineer",
     period: "Jan 2024 to Apr 2024",
     location: "Brookline, MA",
+    logo: "/logos/constantcontact-hq.png",
     summary:
       "Built Spring APIs and React components for the BrandKit product, supporting 1,000+ monthly asset interactions. Automated CI/CD with Jenkins, added Prometheus/Grafana observability, and containerized the app on EKS with Docker and Kubernetes, improving cost efficiency by 20%.",
     technologies: ["Java Spring", "React", "Jenkins", "Docker", "Kubernetes", "Prometheus"],
@@ -50,6 +54,7 @@ const experiences: {
     role: "Machine Learning Engineer",
     period: "May 2023 to Aug 2023",
     location: "Tampa, FL",
+    logo: "/logos/coreavi.png",
     summary:
       "Built a decoder only Transformer for C code generation. Finetuned with Hugging Face and PyTorch for a 50% performance boost, then applied LoRA with quantization to cut training time by 82% on 6,000 samples. Deploying the model into team workflows lifted productivity by 40%.",
     technologies: ["Python", "PyTorch", "Hugging Face", "NLP", "LoRA"],
@@ -60,6 +65,7 @@ const experiences: {
     role: "Software Engineer",
     period: "Sep 2022 to Dec 2022",
     location: "Toronto, ON",
+    logo: "/logos/opentext.png",
     summary:
       "Developed React/TypeScript UI and Node.js/Express APIs for the Case Management product, driving a 15% gain in user satisfaction. Containerized with Docker and deployed on GCP via Kubernetes and Helm, contributing to a 30% improvement in business agility.",
     technologies: ["React", "TypeScript", "Node.js", "Express", "PostgreSQL", "GCP"],
@@ -70,6 +76,7 @@ const experiences: {
     role: "Software Engineer",
     period: "Jan 2022 to Apr 2022",
     location: "Toronto, ON",
+    logo: "/logos/cgi.png",
     summary:
       "Wrote KornShell scripts that cut backup durations by 80% and freed 45% more storage. Built a Java Spring Tableau migration tool that automated server data transfers, reducing manual tracking time by 70%.",
     technologies: ["Java Spring", "KornShell", "Tableau"],
@@ -134,6 +141,15 @@ export function ExperienceSection() {
                   <div className="lg:w-40 shrink-0">
                     <span className="font-mono text-xs text-muted-foreground block">{exp.period}</span>
                     <span className="font-mono text-[10px] text-muted-foreground/80 mt-1 block">{exp.location}</span>
+                    <div className="mt-2.5">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={exp.logo}
+                        alt={`${exp.company} logo`}
+                        className="object-contain h-14 w-auto"
+                        style={{ imageRendering: 'auto' }}
+                      />
+                    </div>
                   </div>
 
                   <div className="flex-1">
