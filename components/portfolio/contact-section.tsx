@@ -13,9 +13,9 @@ const socialLinks = [
   },
   {
     icon: Linkedin,
-    href: "https://www.linkedin.com/",
+    href: "https://www.linkedin.com/in/adish-shah/",
     label: "LinkedIn",
-    username: "LinkedIn profile",
+    username: "adish-shah",
   },
   {
     icon: ExternalLink,
