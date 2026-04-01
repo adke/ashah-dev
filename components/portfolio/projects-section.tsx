@@ -98,7 +98,7 @@ export function ProjectsSection() {
           }`}
         >
           <Link
-            href="https://github.com"
+            href="https://github.com/adke"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 paper-card px-5 py-3 font-bold uppercase tracking-wider text-xs hover:bg-secondary transition-colors group btn-press"

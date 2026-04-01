@@ -7,9 +7,9 @@ import Link from "next/link"
 const socialLinks = [
   {
     icon: Github,
-    href: "https://github.com",
+    href: "https://github.com/adke",
     label: "GitHub",
-    username: "github.com",
+    username: "adke",
   },
   {
     icon: Linkedin,

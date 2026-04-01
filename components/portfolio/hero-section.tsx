@@ -6,7 +6,7 @@ import Link from "next/link"
 import Image from "next/image"
 
 const socialLinks = [
-  { icon: Github, href: "https://github.com", label: "GitHub" },
+  { icon: Github, href: "https://github.com/adke", label: "GitHub" },
   { icon: Linkedin, href: "https://www.linkedin.com/", label: "LinkedIn" },
   { icon: Mail, href: "mailto:adish.shah2003@gmail.com", label: "Email" },
 ]
