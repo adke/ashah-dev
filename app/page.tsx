@@ -22,13 +22,13 @@ export default function PortfolioPage() {
       <SectionDivider variant="code" />
       <AboutSection />
       <SectionDivider variant="circuit" />
+      <EducationSection />
+      <SectionDivider variant="wave" />
       <ExperienceSection />
       <SectionDivider variant="brackets" />
       <ProjectsSection />
       <SectionDivider variant="terminal" />
       <SkillsSection />
-      <SectionDivider variant="wave" />
-      <EducationSection />
       <SectionDivider variant="grid" />
       <GitHubSection />
       <SectionDivider variant="code" />
