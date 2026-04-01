@@ -88,11 +88,12 @@ export function HeroSection() {
               <div className="polaroid sticker shrink-0 hover-lift sm:self-start" style={{ transform: 'rotate(3deg)' }}>
                 <div className="w-24 h-24 sm:w-28 sm:h-28 bg-[var(--paper-blue)] border-2 border-border flex items-center justify-center overflow-hidden">
                   <Image
-                    src="/profile.jpg"
+                    src="/images/profile.jpg"
                     alt="Adish Shah"
-                    width={112}
-                    height={112}
-                    className="w-full h-full object-cover"
+                    width={400}
+                    height={400}
+                    quality={100}
+                    className="w-full h-full object-cover scale-125"
                     priority
                     onError={(e) => {
                       // Fallback to initials if image fails
