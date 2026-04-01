@@ -32,7 +32,7 @@ const experiences: {
     role: "Software Engineer",
     period: "Jan 2025 to Apr 2025",
     location: "San Francisco, CA",
-    logo: "/logos/characterquilt-hq.png",
+    logo: "/logos/characterquilt_logo.jpeg",
     summary:
       "Owned an AI product end to end. Automated ingestion of 100+ weekly transcripts via AWS Lambda, embedded 2,000+ vectors/month in Pinecone (~15 hrs/week saved), and built a FastAPI context assembly layer across Pinecone, S3, and Typesense. Added a multi model router (GPT, Claude, Gemini, Llama, Sonar) that cut token costs by 35% and restructured the backend with OpenAI multi tool support, reducing query time by 55%. Redesigned the React chat UI to surface AI reasoning and search context.",
     technologies: ["React", "FastAPI", "AWS", "TypeScript", "Pinecone", "LLMs"],
@@ -43,7 +43,7 @@ const experiences: {
     role: "Software Engineer",
     period: "Jan 2024 to Apr 2024",
     location: "Brookline, MA",
-    logo: "/logos/constantcontact-hq.png",
+    logo: "/logos/constant-contact-logo-icon.png",
     summary:
       "Built Spring APIs and React components for the BrandKit product, supporting 1,000+ monthly asset interactions. Automated CI/CD with Jenkins, added Prometheus/Grafana observability, and containerized the app on EKS with Docker and Kubernetes, improving cost efficiency by 20%.",
     technologies: ["Java Spring", "React", "Jenkins", "Docker", "Kubernetes", "Prometheus"],
