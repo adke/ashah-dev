@@ -3,18 +3,18 @@ import { Space_Grotesk, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const spaceGrotesk = Space_Grotesk({ 
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: '--font-inter'
 });
 
-const jetbrainsMono = JetBrains_Mono({ 
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: '--font-jetbrains-mono'
 });
 
 export const metadata: Metadata = {
-  title: 'Adish Shah | Computer Engineering · Software Engineer',
+  title: 'adish.dev',
   description:
     'Portfolio of Adish Shah, Computer Engineering student at Waterloo. Experience across web, APIs, cloud, and applied ML.',
   keywords: [
