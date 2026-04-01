@@ -43,20 +43,7 @@ export const metadata: Metadata = {
     description: 'Computer Engineering at Waterloo. Full-stack engineering and applied ML experience.',
   },
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
+    icon: '/logos/adish-tab-logo.png',
     apple: '/apple-icon.png',
   },
 }
