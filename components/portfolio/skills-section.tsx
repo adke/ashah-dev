@@ -2,6 +2,19 @@
 
 import { useEffect, useRef, useState } from "react"
 
+/** Featured first — aligned with resume (agentic/RAG/LLM shipping experience) */
+const aiAgentCategory = {
+  name: "AI, agents & LLMs",
+  badge: "Cutting edge",
+  skills: [
+    { name: "RAG, embeddings & Pinecone", level: 86 },
+    { name: "Pydantic AI & multi-tool LLM workflows", level: 88 },
+    { name: "Streaming LLM APIs (server-sent events)", level: 84 },
+    { name: "Multi-model routing (GPT, Claude, Gemini, Llama, Sonar)", level: 85 },
+  ],
+  variant: "lavender" as const,
+}
+
 const skillCategories = [
   {
     name: "Languages",
@@ -49,6 +62,15 @@ const skillCategories = [
 ]
 
 const technologies = [
+  "LangGraph",
+  "LangChain",
+  "Pydantic AI",
+  "Pinecone",
+  "RAG & embeddings",
+  "Typesense",
+  "Perplexity API",
+  "Ollama",
+  "LLM APIs",
   "Java",
   "Python",
   "C++",
@@ -68,7 +90,6 @@ const technologies = [
   "Google Cloud",
   "PyTorch",
   "TensorFlow",
-  "LLMs",
   "Microservices",
   "Agile",
   "Git",
@@ -108,8 +129,10 @@ export function SkillsSection() {
             <h2 className="text-2xl lg:text-3xl font-bold mb-3 text-balance">
               Technologies I <span className="marker-highlight">work with</span>
             </h2>
-            <p className="text-sm text-muted-foreground max-w-xl">
-              Tools and frameworks I use across projects and professional work.
+            <p className="text-sm text-muted-foreground max-w-2xl">
+              Focused on <span className="text-foreground font-medium">AI-native delivery</span>
+              —RAG and vector search, agentic LLM workflows, multi-model routing, and streaming APIs—plus
+              the full-stack tooling I ship in production.
             </p>
           </div>
         </div>
@@ -119,6 +142,37 @@ export function SkillsSection() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
+          <div
+            className={`md:col-span-2 post-it ${aiAgentCategory.variant} p-5 md:p-6 sticker hover-lift color-transition ring-2 ring-primary/25 shadow-[4px_4px_0_oklch(0.55_0.12_290/0.35)]`}
+            style={{ transform: "rotate(-0.3deg)" }}
+          >
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-5">
+              <h4 className="text-sm font-bold uppercase tracking-wider">{aiAgentCategory.name}</h4>
+              <span className="self-start sm:self-auto text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-sm bg-primary/15 text-primary border border-primary/25">
+                {aiAgentCategory.badge}
+              </span>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-x-8 gap-y-3">
+              {aiAgentCategory.skills.map((skill, skillIndex) => (
+                <div key={skill.name}>
+                  <div className="flex justify-between items-center mb-1.5">
+                    <span className="text-xs font-semibold text-foreground">{skill.name}</span>
+                    <span className="text-[10px] font-mono font-bold">{skill.level}%</span>
+                  </div>
+                  <div className="h-2 bg-background/40 border border-border overflow-hidden">
+                    <div
+                      className="h-full bg-primary/90 transition-all duration-1000 ease-out"
+                      style={{
+                        width: isVisible ? `${skill.level}%` : "0%",
+                        transitionDelay: `${skillIndex * 50}ms`,
+                      }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
           {skillCategories.map((category, categoryIndex) => (
             <div
               key={category.name}
@@ -138,7 +192,7 @@ export function SkillsSection() {
                         className="h-full bg-foreground/80 transition-all duration-1000 ease-out"
                         style={{
                           width: isVisible ? `${skill.level}%` : "0%",
-                          transitionDelay: `${(categoryIndex * 4 + skillIndex) * 50}ms`,
+                          transitionDelay: `${(categoryIndex * 4 + skillIndex + 4) * 50}ms`,
                         }}
                       />
                     </div>
