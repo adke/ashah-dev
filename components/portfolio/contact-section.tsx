@@ -3,6 +3,15 @@
 import { useEffect, useRef, useState } from "react"
 import { Mail, Send, Github, Linkedin, MapPin, Calendar, Phone, ExternalLink } from "lucide-react"
 import Link from "next/link"
+import { toast } from "sonner"
+
+const WEB3FORMS_URL = "https://api.web3forms.com/submit"
+
+type Web3FormsResponse = {
+  success?: boolean
+  message?: string
+  body?: { message?: string }
+}
 
 const socialLinks = [
   {
@@ -35,6 +44,10 @@ export function ContactSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const [isVisible, setIsVisible] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [subject, setSubject] = useState("")
+  const [message, setMessage] = useState("")
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -55,9 +68,54 @@ export function ContactSection() {
   
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY
+    if (!accessKey?.trim()) {
+      toast.error("Contact form is not configured. Add NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY.")
+      return
+    }
+
     setIsSubmitting(true)
-    await new Promise(resolve => setTimeout(resolve, 1500))
-    setIsSubmitting(false)
+    try {
+      const res = await fetch(WEB3FORMS_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: name.trim(),
+          email: email.trim(),
+          subject: subject.trim(),
+          message: message.trim(),
+        }),
+      })
+
+      let data: Web3FormsResponse = {}
+      try {
+        data = (await res.json()) as Web3FormsResponse
+      } catch {
+        toast.error("Invalid response from the form service. Please try again.")
+        return
+      }
+
+      const errMsg =
+        data.body?.message ?? data.message ?? "Something went wrong. Please try again."
+
+      if (data.success === true) {
+        toast.success(data.body?.message ?? "Message sent successfully.")
+        setName("")
+        setEmail("")
+        setSubject("")
+        setMessage("")
+      } else {
+        toast.error(errMsg)
+      }
+    } catch {
+      toast.error("Network error. Check your connection and try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
   
   return (
@@ -95,6 +153,9 @@ export function ContactSection() {
                     </label>
                     <input 
                       id="name"
+                      name="name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
                       placeholder="John Doe"
                       required
                       className="w-full px-3 py-2.5 bg-transparent border-2 border-border font-mono text-sm"
@@ -106,7 +167,10 @@ export function ContactSection() {
                     </label>
                     <input 
                       id="email"
+                      name="email"
                       type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       placeholder="john@example.com"
                       required
                       className="w-full px-3 py-2.5 bg-transparent border-2 border-border font-mono text-sm"
@@ -120,6 +184,9 @@ export function ContactSection() {
                   </label>
                   <input 
                     id="subject"
+                    name="subject"
+                    value={subject}
+                    onChange={(e) => setSubject(e.target.value)}
                     placeholder="Project inquiry"
                     required
                     className="w-full px-3 py-2.5 bg-transparent border-2 border-border font-mono text-sm"
@@ -132,6 +199,9 @@ export function ContactSection() {
                   </label>
                   <textarea 
                     id="message"
+                    name="message"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
                     placeholder="Tell me about your project..."
                     rows={5}
                     required
