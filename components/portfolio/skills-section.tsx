@@ -172,9 +172,6 @@ export function SkillsSection() {
                 </span>
               ))}
             </div>
-            <p className="text-center text-[10px] text-muted-foreground mt-6 leading-relaxed max-w-2xl mx-auto">
-              Also scripting, automated tests, logging stacks, and the usual CS building blocks: structures, OOP, and ML coursework.
-            </p>
           </div>
         </div>
       </div>
