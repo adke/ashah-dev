@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import { Mail, Send, Github, Linkedin, MapPin, Calendar, Phone, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import { toast } from "sonner"
+import { CONTACT_EMAIL, copyContactEmail } from "@/lib/contact"
 
 const WEB3FORMS_URL = "https://api.web3forms.com/submit"
 
@@ -13,7 +14,21 @@ type Web3FormsResponse = {
   body?: { message?: string }
 }
 
-const socialLinks = [
+type ContactSocialLink =
+  | {
+      icon: typeof Github | typeof Linkedin | typeof ExternalLink
+      href: string
+      label: string
+      username: string
+    }
+  | {
+      icon: typeof Mail
+      label: string
+      username: string
+      copyEmail: true
+    }
+
+const socialLinks: ContactSocialLink[] = [
   {
     icon: Github,
     href: "https://github.com/adke",
@@ -34,9 +49,9 @@ const socialLinks = [
   },
   {
     icon: Mail,
-    href: "mailto:adish.shah2003@gmail.com",
     label: "Email",
-    username: "adish.shah2003@gmail.com",
+    username: CONTACT_EMAIL,
+    copyEmail: true,
   },
 ]
 
@@ -117,7 +132,16 @@ export function ContactSection() {
       setIsSubmitting(false)
     }
   }
-  
+
+  const handleCopyEmail = async () => {
+    const ok = await copyContactEmail()
+    if (ok) {
+      toast.success("Email copied to clipboard")
+    } else {
+      toast.error("Couldn't copy email. Try again or copy it manually.")
+    }
+  }
+
   return (
     <section id="contact" ref={sectionRef} className="py-12 lg:py-16 relative paper-texture">
       <div className="max-w-4xl mx-auto px-6">
@@ -267,15 +291,17 @@ export function ContactSection() {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <Mail className="h-4 w-4 shrink-0" />
+                  <button
+                    type="button"
+                    onClick={handleCopyEmail}
+                    className="shrink-0 rounded-sm border-0 bg-transparent p-0 text-foreground transition-colors hover:text-primary cursor-pointer"
+                    aria-label="Copy email address"
+                  >
+                    <Mail className="h-4 w-4" />
+                  </button>
                   <div>
                     <p className="font-bold text-xs">Email</p>
-                    <Link
-                      href="mailto:adish.shah2003@gmail.com"
-                      className="text-xs text-primary font-mono underline break-all"
-                    >
-                      adish.shah2003@gmail.com
-                    </Link>
+                    <p className="text-xs text-primary font-mono break-all">{CONTACT_EMAIL}</p>
                   </div>
                 </div>
               </div>
@@ -287,22 +313,57 @@ export function ContactSection() {
                 Connect With Me
               </h4>
               <div className="grid grid-cols-2 gap-2">
-                {socialLinks.map((social, index) => (
-                  <Link
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="paper-card p-2.5 bg-background/40 flex items-center gap-2 hover:bg-background transition-colors sticker"
-                    style={{ transform: `rotate(${index % 2 === 0 ? -0.5 : 0.5}deg)` }}
+                {socialLinks.map((social, index) => {
+                  const cardClass =
+                    "paper-card p-2.5 bg-background/40 flex items-center gap-2 hover:bg-background transition-colors sticker text-left w-full"
+                  const rotation = { transform: `rotate(${index % 2 === 0 ? -0.5 : 0.5}deg)` }
+                  if ("copyEmail" in social && social.copyEmail) {
+                    return (
+                      <button
+                        key={social.label}
+                        type="button"
+                        onClick={handleCopyEmail}
+                        className={cardClass}
+                        style={rotation}
+                        aria-label="Copy email address"
+                      >
+                        <social.icon className="h-4 w-4 shrink-0" />
+                        <div className="min-w-0">
+                          <p className="font-bold text-[10px]">{social.label}</p>
+                          <p className="text-[10px] text-foreground/70 font-mono break-all">
+                            {social.username}
+                          </p>
+                        </div>
+                      </button>
+                    )
+                  }
+                  const linkSocial = social as Extract<
+                    ContactSocialLink,
+                    { href: string }
                   >
-                    <social.icon className="h-4 w-4" />
-                    <div>
-                      <p className="font-bold text-[10px]">{social.label}</p>
-                      <p className="text-[10px] text-foreground/70 font-mono">{social.username}</p>
-                    </div>
-                  </Link>
-                ))}
+                  const openInNewTab =
+                    linkSocial.href.startsWith("http://") ||
+                    linkSocial.href.startsWith("https://")
+                  return (
+                    <Link
+                      key={linkSocial.label}
+                      href={linkSocial.href}
+                      {...(openInNewTab
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
+                      className={cardClass}
+                      style={rotation}
+                    >
+                      <linkSocial.icon className="h-4 w-4 shrink-0" />
+                      <div className="min-w-0">
+                        <p className="font-bold text-[10px]">{linkSocial.label}</p>
+                        <p className="text-[10px] text-foreground/70 font-mono break-all">
+                          {linkSocial.username}
+                        </p>
+                      </div>
+                    </Link>
+                  )
+                })}
               </div>
             </div>
           </div>

@@ -4,16 +4,31 @@ import { useEffect, useState } from "react"
 import { Github, Linkedin, Mail, ArrowDown, MapPin, Sparkles } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { toast } from "sonner"
+import { copyContactEmail } from "@/lib/contact"
 
-const socialLinks = [
+type HeroSocialLink =
+  | { icon: typeof Github | typeof Linkedin; href: string; label: string }
+  | { icon: typeof Mail; label: string; copyEmail: true }
+
+const socialLinks: HeroSocialLink[] = [
   { icon: Github, href: "https://github.com/adke", label: "GitHub" },
   { icon: Linkedin, href: "https://www.linkedin.com/in/adish-shah/", label: "LinkedIn" },
-  { icon: Mail, href: "mailto:adish.shah2003@gmail.com", label: "Email" },
+  { icon: Mail, label: "Email", copyEmail: true },
 ]
 
 export function HeroSection() {
   const [yearsOnEarth, setYearsOnEarth] = useState("00.000000000")
   const [isVisible, setIsVisible] = useState(false)
+
+  const handleCopyEmail = async () => {
+    const ok = await copyContactEmail()
+    if (ok) {
+      toast.success("Email copied to clipboard")
+    } else {
+      toast.error("Couldn't copy email. Try again or copy it manually.")
+    }
+  }
   
   useEffect(() => {
     setIsVisible(true)
@@ -154,19 +169,41 @@ export function HeroSection() {
             
             {/* Social links */}
             <div className="flex items-center gap-2 stagger-children">
-              {socialLinks.map((social, index) => (
-                <Link
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="paper-card p-3 hover:bg-secondary transition-all sticker icon-bounce pop-hover"
-                  aria-label={social.label}
-                  style={{ transform: `rotate(${index % 2 === 0 ? -1.5 : 1.5}deg)` }}
-                >
-                  <social.icon className="h-5 w-5 transition-transform" />
-                </Link>
-              ))}
+              {socialLinks.map((social, index) => {
+                const className =
+                  "paper-card p-3 hover:bg-secondary transition-all sticker icon-bounce pop-hover"
+                const style = {
+                  transform: `rotate(${index % 2 === 0 ? -1.5 : 1.5}deg)`,
+                }
+                if ("copyEmail" in social && social.copyEmail) {
+                  return (
+                    <button
+                      key={social.label}
+                      type="button"
+                      onClick={handleCopyEmail}
+                      className={className}
+                      aria-label="Copy email address"
+                      style={style}
+                    >
+                      <social.icon className="h-5 w-5 transition-transform" />
+                    </button>
+                  )
+                }
+                const linkSocial = social as Extract<HeroSocialLink, { href: string }>
+                return (
+                  <Link
+                    key={linkSocial.label}
+                    href={linkSocial.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={className}
+                    aria-label={linkSocial.label}
+                    style={style}
+                  >
+                    <linkSocial.icon className="h-5 w-5 transition-transform" />
+                  </Link>
+                )
+              })}
             </div>
           </div>
         </div>
