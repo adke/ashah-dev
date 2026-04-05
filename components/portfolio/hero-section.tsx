@@ -150,21 +150,22 @@ export function HeroSection() {
             </div>
             
             {/* CTA buttons */}
-            <div className="flex flex-wrap gap-4 mb-10">
-              <Link 
+            <div className="flex flex-wrap gap-4 mb-10 relative z-20">
+              {/* Native <a> for in-page anchors — Next.js <Link href="#..."> can skip scrolling intermittently */}
+              <a
                 href="#contact"
-                className="inline-flex items-center gap-2 px-6 py-3 border-2 border-border bg-primary text-white font-bold uppercase tracking-wider text-sm btn-press breathe shake-hover"
-                style={{ boxShadow: '4px 4px 0 var(--border)' }}
+                className="inline-flex items-center gap-2 px-6 py-3 border-2 border-border bg-primary text-primary-foreground font-bold uppercase tracking-wider text-sm btn-press breathe shake-hover"
+                style={{ boxShadow: "4px 4px 0 var(--border)" }}
               >
                 <Sparkles className="h-4 w-4" />
                 {"Let's Talk"}
-              </Link>
-              <Link 
+              </a>
+              <a
                 href="#projects"
                 className="paper-card px-6 py-3 bg-card font-bold uppercase tracking-wider text-sm hover:bg-secondary transition-colors btn-press pop-hover"
               >
                 View Projects
-              </Link>
+              </a>
             </div>
             
             {/* Social links */}

@@ -38,14 +38,14 @@ export function Footer() {
           {/* Navigation */}
           <nav className="flex flex-wrap justify-center gap-1">
             {footerLinks.map((link, index) => (
-              <Link
+              <a
                 key={link.label}
                 href={link.href}
                 className="px-2.5 py-1.5 text-xs font-bold uppercase tracking-wider border-2 border-transparent hover:border-border transition-colors"
                 style={{ transform: `rotate(${index % 2 === 0 ? -0.5 : 0.5}deg)` }}
               >
                 {link.label}
-              </Link>
+              </a>
             ))}
           </nav>
           

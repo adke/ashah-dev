@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react"
 import { Gamepad2, Code2, Keyboard, Brain, ArrowUpRight } from "lucide-react"
-import Link from "next/link"
 
 const interests = [
   {
@@ -94,14 +93,14 @@ export function AboutSection() {
                 </p>
                 
                 <div className="pt-4">
-                  <Link 
+                  <a
                     href="#contact"
-                    className="inline-flex items-center gap-2 px-5 py-3 border-2 border-border bg-primary text-white font-bold uppercase tracking-wider text-xs btn-press"
-                    style={{ boxShadow: '4px 4px 0 var(--border)' }}
+                    className="inline-flex items-center gap-2 px-5 py-3 border-2 border-border bg-primary text-primary-foreground font-bold uppercase tracking-wider text-xs btn-press"
+                    style={{ boxShadow: "4px 4px 0 var(--border)" }}
                   >
                     {"Let's work together"}
                     <ArrowUpRight className="h-3.5 w-3.5" />
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>

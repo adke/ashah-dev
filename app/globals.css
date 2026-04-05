@@ -3,6 +3,11 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Fixed nav: in-page anchors leave room so headings aren’t hidden under the bar */
+main.min-h-screen section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
 :root {
   /* Paper Theme - clean neutral with blue accent */
   --background: oklch(0.97 0.005 240);
