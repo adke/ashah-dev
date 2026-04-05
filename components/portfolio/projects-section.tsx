@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { Github, ArrowRight } from "lucide-react"
+import Image from "next/image"
 import Link from "next/link"
 
 const featuredProjects = [
@@ -11,6 +12,19 @@ const featuredProjects = [
       "A platform for running structured reviews with language models: configure rubrics, kick off batches, and inspect results in a web UI, with a Python API and local model runtime.",
     technologies: ["React", "TypeScript", "FastAPI", "Python", "SQLite", "Ollama"],
     period: "Project",
+    image: "/projects/gavelai.jpg",
+    imageAlt:
+      "GAVELAI infographic: workflow from answers through a grading UI, robots, dashboards, and architecture overview",
+  },
+  {
+    title: "ColdCompile",
+    description:
+      "A LangGraph workflow for outbound job outreach: research companies from a CSV, classify fit, discover contacts, verify inboxes, tailor drafts to your resume, and queue personalized emails in Gmail—with caching and run stats.",
+    technologies: ["Python", "LangGraph", "LangChain", "Gmail API", "Tavily", "pypdf"],
+    period: "Project",
+    image: "/projects/coldcompile.jpg",
+    imageAlt:
+      "Illustration of a magnifying glass over profile cards with verified email and contact details, representing lead discovery and outreach",
   },
 ]
 
@@ -35,8 +49,6 @@ export function ProjectsSection() {
     return () => observer.disconnect()
   }, [])
 
-  const variants = ["red", "blue", "green", "yellow", "peach", "sage"] as const
-
   return (
     <section id="projects" ref={sectionRef} className="py-12 lg:py-16 relative paper-texture">
       <div className="max-w-4xl mx-auto px-6">
@@ -50,12 +62,12 @@ export function ProjectsSection() {
               Featured <span className="marker-highlight">work</span>
             </h2>
             <p className="text-sm text-muted-foreground max-w-xl">
-              Built end to end: UI, API, and model orchestration.
+              Apps, agents, and pipelines—UI, APIs, and orchestration end to end.
             </p>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-1 gap-5 mb-14 max-w-xl mx-auto">
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 mb-14 max-w-4xl mx-auto">
           {featuredProjects.map((project, index) => (
             <div
               key={project.title}
@@ -68,10 +80,14 @@ export function ProjectsSection() {
                 className="polaroid sticker h-full flex flex-col hover-lift color-transition"
                 style={{ transform: `rotate(${index % 2 === 0 ? -1.5 : 1.5}deg)` }}
               >
-                <div
-                  className={`aspect-[4/3] post-it ${variants[index % 3]} border-2 border-border flex items-center justify-center mb-4`}
-                >
-                  <span className="text-5xl font-bold text-foreground/15">{project.title.charAt(0)}</span>
+                <div className="relative aspect-[4/3] overflow-hidden border-2 border-border bg-muted mb-4 shadow-[3px_3px_0_var(--border)]">
+                  <Image
+                    src={project.image}
+                    alt={project.imageAlt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 400px"
+                  />
                 </div>
 
                 <div className="flex-1 flex flex-col">
