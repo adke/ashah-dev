@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { Mail, Send, Github, Linkedin, MapPin, Calendar, Phone, ExternalLink } from "lucide-react"
+import { Mail, Send, Github, Linkedin, MapPin, Calendar, Phone } from "lucide-react"
 import Link from "next/link"
 import { toast } from "sonner"
 import { CONTACT_EMAIL, copyContactEmail } from "@/lib/contact"
@@ -16,7 +16,7 @@ type Web3FormsResponse = {
 
 type ContactSocialLink =
   | {
-      icon: typeof Github | typeof Linkedin | typeof ExternalLink
+      icon: typeof Github | typeof Linkedin
       href: string
       label: string
       username: string
@@ -40,12 +40,6 @@ const socialLinks: ContactSocialLink[] = [
     href: "https://www.linkedin.com/in/adish-shah/",
     label: "LinkedIn",
     username: "adish-shah",
-  },
-  {
-    icon: ExternalLink,
-    href: "https://adishs.netlify.app",
-    label: "Website",
-    username: "Portfolio",
   },
   {
     icon: Mail,
@@ -312,10 +306,10 @@ export function ContactSection() {
               <h4 className="text-sm font-bold mb-4 uppercase tracking-wider">
                 Connect With Me
               </h4>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3">
                 {socialLinks.map((social, index) => {
                   const cardClass =
-                    "paper-card p-2.5 bg-background/40 flex items-center gap-2 hover:bg-background transition-colors sticker text-left w-full"
+                    "paper-card p-2.5 bg-background/40 flex min-h-full items-center gap-2 hover:bg-background transition-colors sticker text-left w-full"
                   const rotation = { transform: `rotate(${index % 2 === 0 ? -0.5 : 0.5}deg)` }
                   if ("copyEmail" in social && social.copyEmail) {
                     return (
@@ -323,14 +317,14 @@ export function ContactSection() {
                         key={social.label}
                         type="button"
                         onClick={handleCopyEmail}
-                        className={cardClass}
+                        className={`${cardClass} sm:col-span-2 sm:p-3 sm:items-start sm:gap-3`}
                         style={rotation}
                         aria-label="Copy email address"
                       >
-                        <social.icon className="h-4 w-4 shrink-0" />
-                        <div className="min-w-0">
-                          <p className="font-bold text-[10px]">{social.label}</p>
-                          <p className="text-[10px] text-foreground/70 font-mono break-all">
+                        <social.icon className="h-4 w-4 shrink-0 sm:mt-0.5 sm:h-5 sm:w-5" />
+                        <div className="min-w-0 flex-1 text-left">
+                          <p className="font-bold text-[10px] sm:text-xs">{social.label}</p>
+                          <p className="text-[10px] text-foreground/70 font-mono break-words sm:text-sm sm:leading-snug sm:text-foreground/80">
                             {social.username}
                           </p>
                         </div>
@@ -357,7 +351,7 @@ export function ContactSection() {
                       <linkSocial.icon className="h-4 w-4 shrink-0" />
                       <div className="min-w-0">
                         <p className="font-bold text-[10px]">{linkSocial.label}</p>
-                        <p className="text-[10px] text-foreground/70 font-mono break-all">
+                        <p className="text-[10px] text-foreground/70 font-mono break-words">
                           {linkSocial.username}
                         </p>
                       </div>
